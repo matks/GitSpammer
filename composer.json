@@ -1,0 +1,34 @@
+{
+    "name": "matks/gitspammer",
+    "description": "Git-based tool for procedures automatization",
+    "type": "library",
+    "keywords": [
+        "git",
+        "procedure"
+    ],
+    "homepage": "https://github.com/matks/GitSpammer",
+    "license": "MIT",
+    "minimum-stability": "dev",
+    "authors": [
+        {
+            "name": "Mathieu Ferment",
+            "email": "mathieu.ferment@gmail.com"
+        }
+    ],
+    "require": {
+        "php": ">=5.3.3",
+    },
+    "require-dev": {
+        "atoum/atoum" : "dev-master"
+    },
+    "autoload": {
+        "psr-0" : {
+            "Matks\\GitSpam" : "src/",
+        }
+    },
+    "extra": {
+        "branch-alias": {
+            "dev-master": "0.1-dev"
+        }
+    }
+}
