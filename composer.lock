@@ -4,7 +4,7 @@
         "Read more about it at http://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "11f3e8b4ebfa8e8fd316ad007d0b1dc8",
+    "hash": "eab8f594f5a0366ef02fb7c05859b3ba",
     "packages": [
         {
             "name": "guzzle/guzzle",
@@ -160,6 +160,54 @@
             "time": "2014-09-23 05:58:10"
         },
         {
+            "name": "matks/vivian",
+            "version": "v1.0",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/matks/Vivian.git",
+                "reference": "9c6f5b7b23ff0ecf71a26010fdcfb450244c97ab"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/matks/Vivian/zipball/9c6f5b7b23ff0ecf71a26010fdcfb450244c97ab",
+                "reference": "9c6f5b7b23ff0ecf71a26010fdcfb450244c97ab",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "require-dev": {
+                "atoum/atoum": "dev-master"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "0.1-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Matks\\Vivian": "src/"
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Mathieu Ferment",
+                    "email": "mathieu.ferment@gmail.com"
+                }
+            ],
+            "description": "Php tools to provide a pretty console output",
+            "homepage": "https://github.com/matks/Vivian",
+            "keywords": [
+                "console"
+            ],
+            "time": "2014-10-13 12:18:12"
+        },
+        {
             "name": "symfony/event-dispatcher",
             "version": "dev-master",
             "target-dir": "Symfony/Component/EventDispatcher",
@@ -216,6 +264,53 @@
             "description": "Symfony EventDispatcher Component",
             "homepage": "http://symfony.com",
             "time": "2014-10-04 06:08:58"
+        },
+        {
+            "name": "symfony/yaml",
+            "version": "dev-master",
+            "target-dir": "Symfony/Component/Yaml",
+            "source": {
+                "type": "git",
+                "url": "https://github.com/symfony/Yaml.git",
+                "reference": "499f7d7aa96747ad97940089bd7a1fb24ad8182a"
+            },
+            "dist": {
+                "type": "zip",
+                "url": "https://api.github.com/repos/symfony/Yaml/zipball/499f7d7aa96747ad97940089bd7a1fb24ad8182a",
+                "reference": "499f7d7aa96747ad97940089bd7a1fb24ad8182a",
+                "shasum": ""
+            },
+            "require": {
+                "php": ">=5.3.3"
+            },
+            "type": "library",
+            "extra": {
+                "branch-alias": {
+                    "dev-master": "2.6-dev"
+                }
+            },
+            "autoload": {
+                "psr-0": {
+                    "Symfony\\Component\\Yaml\\": ""
+                }
+            },
+            "notification-url": "https://packagist.org/downloads/",
+            "license": [
+                "MIT"
+            ],
+            "authors": [
+                {
+                    "name": "Symfony Community",
+                    "homepage": "http://symfony.com/contributors"
+                },
+                {
+                    "name": "Fabien Potencier",
+                    "email": "fabien@symfony.com"
+                }
+            ],
+            "description": "Symfony Yaml Component",
+            "homepage": "http://symfony.com",
+            "time": "2014-10-05 13:53:50"
         }
     ],
     "packages-dev": [
@@ -298,6 +393,7 @@
     "minimum-stability": "dev",
     "stability-flags": {
         "knplabs/github-api": 20,
+        "symfony/yaml": 20,
         "atoum/atoum": 20
     },
     "prefer-stable": false,
