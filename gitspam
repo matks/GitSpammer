@@ -15,9 +15,9 @@ if (!defined('AUTOLOAD_COMPOSER_INSTALL')) {
 
 require AUTOLOAD_COMPOSER_INSTALL;
 
-if (count($argv) !== 1) {
-	echo 'php gitspam' . PHP_EOL;
+if (count($argv) !== 3) {
+	echo 'php gitspam <repositoryName> <pullRequestID>' . PHP_EOL;
 	die(1);
 }
 
-Matks\GitSpam\Launcher::main();
+Matks\GitSpam\ConsoleManager::main($argv[1], $argv[2]);
