@@ -22,29 +22,36 @@ use Exception;
 class ConsoleManager
 {
 
+    const YOUTRACK_TICKET_BASE_URL = 'http://mobpartner.myjetbrains.com/youtrack/issue/';
+
     /**
      * Main
      *
      * @param  $username
      * @param  $password
+     * @param  $repositoryOwner
      * @param  $repositoryName
      * @param  $pullRequestID
      */
-    public static function main($username, $password, $repositoryName, $pullRequestID)
+    public static function main($username, $password, $repositoryOwner, $repositoryName, $pullRequestID)
     {
         $consoleManager = new ConsoleManager();
-        $consoleManager->run((string) $username, (string) $password, (string)$repositoryName, intval($pullRequestID));
+        $consoleManager->run((string) $username, (string) $password, (string) $repositoryOwner, (string)$repositoryName, intval($pullRequestID));
     }
 
     /**
      * Run
      */
-    public function run($username, $password, $repositoryName, $pullRequestID)
+    public function run($username, $password, $repositoryOwner, $repositoryName, $pullRequestID)
     {
         $gitSpammer = $this->setup($username, $password);
 
-        $analysisResults = $gitSpammer->analysePR($username, $repositoryName, $pullRequestID);
-        $this->writePRAnalysisResult($repositoryName, $pullRequestID, $analysisResults);
+        $analysisResults = $gitSpammer->analysePR($repositoryOwner, $repositoryName, $pullRequestID);
+        $youtrackLinks = $this->computeYouTrackLinks($analysisResults);
+
+        echo Tools::green('Pull Request ' . $pullRequestID . '['. $repositoryName . '] analyzed:');
+        echo PHP_EOL;
+        echo Tools::s_phpArray($youtrackLinks);
     }
 
     /**
@@ -65,14 +72,24 @@ class ConsoleManager
 
     private function writePRAnalysisResult($repositoryName, $pullRequestID, $results)
     {
-        echo Tools::green('Pull Request' . $pullRequestID . ' (repository '. $repositoryName . ') analyzed:');
+        echo Tools::green('Pull Request ' . $pullRequestID . '['. $repositoryName . '] analyzed:');
         echo PHP_EOL;
 
         if (!empty($results)) {
             echo Tools::s_list1($results);
         } else {
             echo Tools::red('No YouTrack IDs found');
+            echo PHP_EOL;
         }
-        echo PHP_EOL;
+    }
+
+    private function computeYouTrackLinks(array $projectIDs)
+    {
+        $results = array();
+        foreach ($projectIDs as $ID) {
+            $results[$ID] = static::YOUTRACK_TICKET_BASE_URL . $ID;
+        }
+
+        return $results;
     }
 }

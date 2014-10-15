@@ -26,11 +26,11 @@ class GitSpammer
         $this->commitReader = $commitReader;
     }
 
-    public function analysePR($username, $repositoryName, $pullRequestID)
+    public function analysePR($repositoryOwner, $repositoryName, $pullRequestID)
     {
         $commits = $this->githubClient
                             ->api('pull_request')
-                            ->commits($username, $repositoryName, $pullRequestID)
+                            ->commits($repositoryOwner, $repositoryName, $pullRequestID)
         ;
         
         if (!$commits) {

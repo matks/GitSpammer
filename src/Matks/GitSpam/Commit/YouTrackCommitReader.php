@@ -9,7 +9,7 @@ use Matks\GitSpam\Commit\CommitReaderInterface;
  */
 class YouTrackCommitReader implements CommitReaderInterface
 {
-	const YOUTRACK_PROJECT_ID_REGEX = '^([^:])*:(.*)$';
+	const YOUTRACK_PROJECT_ID_REGEX = '^([a-zA-Z]*-\d*):[^:]*$';
 
 	/**
 	 * Capture YouTrack project ID in the given commits list
@@ -21,15 +21,15 @@ class YouTrackCommitReader implements CommitReaderInterface
 		$result = array();
 
 		foreach ($commits as $commit) {
-			$formattedPattern = '#' . static::YOUTRACK_PROJECT_ID_REGEX . '#';
-			$message = $commit['message'];
-			$guessedProjectID = preg_match($formattedPattern, $message);
+			$regexPattern = '#' . static::YOUTRACK_PROJECT_ID_REGEX . '#';
+			$message      = $commit['commit']['message'];
 
-			if (count($guessedProjectID) > 1) {
-				continue;
-			}
+			$matches = array();
+			$match = preg_match($regexPattern, $message, $matches);
 
-			if ($guessedProjectID === 0) {
+			$guessedProjectID = $matches[1];
+
+			if ($match === 0) {
 				continue;
 			}
 
