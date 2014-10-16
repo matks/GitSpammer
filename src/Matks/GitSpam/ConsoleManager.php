@@ -3,20 +3,16 @@
 namespace Matks\GitSpam;
 
 use Matks\GitSpam\Commit\YouTrackCommitReader;
-use Matks\GitSpam\Configuration\ConfigurationLoader;
-use Matks\GitSpam\GitSpammer;
 
 use Matks\Vivian\Tools;
 use Github\Client as GithubAPIClient;
-
-use Exception;
 
 /**
  * GitSpammer Console Manager
  *
  * Build GitSpammer project objects, parse string inputs as arguments
  * for these objects and echo results in a readable manner
- * 
+ *
  */
 class ConsoleManager
 {
@@ -35,7 +31,7 @@ class ConsoleManager
     public static function main($username, $password, $repositoryOwner, $repositoryName, $pullRequestID)
     {
         $consoleManager = new ConsoleManager();
-        $consoleManager->run((string) $username, (string) $password, (string) $repositoryOwner, (string)$repositoryName, intval($pullRequestID));
+        $consoleManager->run((string) $username, (string) $password, (string) $repositoryOwner, (string) $repositoryName, intval($pullRequestID));
     }
 
     /**
@@ -56,6 +52,9 @@ class ConsoleManager
     /**
 	 * Construct GitSpam instance with its dependencies
      *
+     * @param $username
+     * @param $password
+     *
 	 * @return GitSpam
 	 */
     private function setup($username, $password)
@@ -69,6 +68,12 @@ class ConsoleManager
         return $gitSpammer;
     }
 
+    /**
+     * Echo PR analysis result in console
+     * @param string  $repositoryName
+     * @param integer $pullRequestID
+     * @param array   $results
+     */
     private function writePRAnalysisResult($repositoryName, $pullRequestID, $results)
     {
         echo Tools::green('Pull Request ' . $pullRequestID . ' ['. $repositoryName . '] analyzed:');
@@ -82,6 +87,12 @@ class ConsoleManager
         }
     }
 
+    /**
+     * Compute matching YouTrack project URLs for given project IDs
+     *
+     * @param  array $projectIDs
+     * @return array
+     */
     private function computeYouTrackLinks(array $projectIDs)
     {
         $results = array();

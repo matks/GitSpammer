@@ -15,8 +15,8 @@ if (!defined('AUTOLOAD_COMPOSER_INSTALL')) {
 require AUTOLOAD_COMPOSER_INSTALL;
 
 if (count($argv) !== 6) {
-	echo 'php gitspam.php <username> <password> <repositoryOwner> <repositoryName> <pullRequestID>' . PHP_EOL;
-	die(1);
+    echo 'php gitspam.php <username> <password> <repositoryOwner> <repositoryName> <pullRequestID>' . PHP_EOL;
+    die(1);
 }
 
 Matks\GitSpam\ConsoleManager::main($argv[1], $argv[2], $argv[3], $argv[4], $argv[5]);

@@ -18,7 +18,7 @@ class YouTrackCommitReader extends atoum
         ;
     }
 
-    public function testCommitAnalysis()
+    public function testStandardCommitsAnalysis()
     {
         $reader = new Commit\YouTrackCommitReader();
 
@@ -33,6 +33,25 @@ class YouTrackCommitReader extends atoum
         $results = $reader->analyseCommits($commits);
 
         $expectedArray = array('ABC-129', 'RepNot-128');
+        $this
+            ->array($results)
+                ->isEqualTo($expectedArray)
+        ;
+    }
+
+    public function testCommitWithErrorsAnalysis()
+    {
+        $reader = new Commit\YouTrackCommitReader();
+
+        $commits = array(
+            array('commit' => array('message' => 'Thread67 :lpo')),
+            array('commit' => array('message' => 'NotInGoodShape5: hello')),
+            array('commit' => array('message' => 'BadProject-100 shines'))
+        );
+
+        $results = $reader->analyseCommits($commits);
+
+        $expectedArray = array('Thread-67', 'NotInGoodShape-5', 'BadProject-100');
         $this
             ->array($results)
                 ->isEqualTo($expectedArray)
