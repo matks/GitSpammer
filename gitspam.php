@@ -1,4 +1,3 @@
-#!/usr/bin/env php
 <?php
 
 $autoloadFile = 'vendor/autoload.php';
@@ -16,7 +15,7 @@ if (!defined('AUTOLOAD_COMPOSER_INSTALL')) {
 require AUTOLOAD_COMPOSER_INSTALL;
 
 if (count($argv) !== 6) {
-	echo 'php gitspam <username> <password> <repositoryOwner> <repositoryName> <pullRequestID>' . PHP_EOL;
+	echo 'php gitspam.php <username> <password> <repositoryOwner> <repositoryName> <pullRequestID>' . PHP_EOL;
 	die(1);
 }
 

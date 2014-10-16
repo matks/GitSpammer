@@ -9,7 +9,6 @@ use Matks\GitSpam\GitSpammer;
 use Matks\Vivian\Tools;
 use Github\Client as GithubAPIClient;
 
-
 use Exception;
 
 /**
@@ -72,7 +71,7 @@ class ConsoleManager
 
     private function writePRAnalysisResult($repositoryName, $pullRequestID, $results)
     {
-        echo Tools::green('Pull Request ' . $pullRequestID . '['. $repositoryName . '] analyzed:');
+        echo Tools::green('Pull Request ' . $pullRequestID . ' ['. $repositoryName . '] analyzed:');
         echo PHP_EOL;
 
         if (!empty($results)) {

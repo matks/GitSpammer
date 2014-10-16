@@ -27,5 +27,5 @@ vendor/bin/atoum -bf vendor/autoload.php -d tests/Units/
 
 Run the following command:
 ```bash
-$ php gitspam <username> <password> <repositoryName> <pullRequestID>
+$ bash gitspam.sh <username> <repositoryOwner> <repositoryName> <pullRequestID>
 ```
