@@ -46,7 +46,7 @@ class ConsoleManager
 
         echo Tools::green('Pull Request ' . $pullRequestID . '['. $repositoryName . '] analyzed:');
         echo PHP_EOL;
-        echo Tools::s_phpArray($youtrackLinks);
+        echo Tools::s_list1($youtrackLinks);
     }
 
     /**
